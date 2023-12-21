@@ -2,6 +2,7 @@ package com.kfm.shop.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.kfm.shop.comment.util.Result;
 import org.junit.jupiter.api.Test;
 
 class ResultTest {
