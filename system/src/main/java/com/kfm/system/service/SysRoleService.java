@@ -2,6 +2,7 @@ package com.kfm.system.service;
 
 import com.kfm.system.model.SysRole;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.kfm.system.model.dto.RoleGrantMenuDTO;
 
 /**
 * @author AdminHan
@@ -9,5 +10,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2023-12-19 22:34:05
 */
 public interface SysRoleService extends IService<SysRole> {
-
+    boolean grant(RoleGrantMenuDTO roleGrantMenuDTO);
 }

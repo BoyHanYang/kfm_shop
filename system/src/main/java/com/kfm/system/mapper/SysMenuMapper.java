@@ -1,7 +1,10 @@
 package com.kfm.system.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.kfm.system.model.SysMenu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
 * @author AdminHan
@@ -11,6 +14,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface SysMenuMapper extends BaseMapper<SysMenu> {
 
+    List<SysMenu> selectMenusWithRoleIds(List<Integer> ids);
 }
 
 

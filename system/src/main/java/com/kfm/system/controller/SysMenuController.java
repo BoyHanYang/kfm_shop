@@ -10,9 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author yangbohan
@@ -34,6 +32,32 @@ public class SysMenuController {
             queryWrapper.eq("status",sysMenu.getName());
         }
         PageHelper.startPage(sysMenu.getPage(),sysMenu.getSize());
-        return Result.ok(sysMenuService.list(queryWrapper));
+        return Result.ok(sysMenuService.treeList(sysMenu));
+    }
+
+    @GetMapping("/{id}")
+    @ApiOperation(value = "根据id获取菜单信息", notes = "根据id获取菜单信息")
+    public Result getGoodsById(@ApiParam(name = "id", value = "菜单id", required = true) @PathVariable Integer id) {
+        return Result.ok(sysMenuService.getById(id));
+    }
+
+
+    @PostMapping
+    @ApiOperation(value = "根据id修改菜单信息", notes = "根据id修改菜单信息")
+    public Result updateGoodsById(@ApiParam(name = "sysMenu", value = "菜单信息", required = true) SysMenu sysMenu) {
+        return Result.ok(sysMenuService.updateById(sysMenu));
+    }
+
+
+    @PutMapping
+    @ApiOperation(value = "新增菜单信息", notes = "新增菜单信息")
+    public Result addGoods(@ApiParam(name = "sysMenu", value = "菜单信息", required = true) SysMenu sysMenu) {
+        return Result.ok(sysMenuService.save(sysMenu));
+    }
+
+    @DeleteMapping("/{id}")
+    @ApiOperation(value = "根据id删除菜单信息", notes = "根据id删除菜单信息")
+    public Result deleteGoodsById(@ApiParam(name = "id", value = "菜单id", required = true) @PathVariable Integer id) {
+        return Result.ok(sysMenuService.removeById(id));
     }
 }

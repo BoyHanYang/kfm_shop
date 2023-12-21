@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
+
+import com.kfm.shop.comment.model.BaseModel;
 import lombok.Data;
 
 /**
@@ -14,7 +16,7 @@ import lombok.Data;
  */
 @TableName(value ="sys_user")
 @Data
-public class SysUser extends BaseModelUser implements Serializable {
+public class SysUser extends BaseModel implements Serializable {
     /**
      * 用户id
      */
@@ -40,6 +42,10 @@ public class SysUser extends BaseModelUser implements Serializable {
      * 姓名
      */
     private String name;
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
 
+    @TableField(exist = false)
+    private Integer[] roleIds;
 
 }

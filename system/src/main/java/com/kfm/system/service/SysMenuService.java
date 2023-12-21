@@ -1,7 +1,10 @@
 package com.kfm.system.service;
 
+import cn.hutool.core.lang.tree.Tree;
 import com.kfm.system.model.SysMenu;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
 * @author AdminHan
@@ -9,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2023-12-19 22:31:02
 */
 public interface SysMenuService extends IService<SysMenu> {
-
+    List<Tree<Integer>> treeList(SysMenu sysMenu);
 }

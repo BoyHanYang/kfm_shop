@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
+
+import com.kfm.shop.comment.model.BaseModel;
 import lombok.Data;
 
 /**
@@ -14,7 +16,7 @@ import lombok.Data;
  */
 @TableName(value ="sys_role")
 @Data
-public class SysRole extends BaseModelRole implements Serializable {
+public class SysRole extends BaseModel implements Serializable {
     /**
      * 角色id
      */
