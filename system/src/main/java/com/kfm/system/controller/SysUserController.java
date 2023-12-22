@@ -8,8 +8,11 @@ import com.kfm.system.util.Result;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Random;
 
 /**
  * @Author yangbohan
@@ -20,6 +23,24 @@ import org.springframework.web.bind.annotation.*;
 public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    @PostMapping("/login")
+    @ApiOperation(value = "用户登录", notes = "用户登录")
+    public Result login(@RequestBody SysUser sysUser) {
+        /*QueryWrapper<SysUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("username",sysUser.getUsername());
+        queryWrapper.eq("password",sysUser.getPassword());
+        SysUser user = sysUserService.getOne(queryWrapper);
+        if (ObjectUtils.isEmpty(user)){
+            return Result.error("用户名或密码错误");
+        }
+        String token = new Random().nextLong()+"";
+        redisTemplate.opsForValue().set(token,user);*/
+        String token = sysUserService.login(sysUser);
+        return Result.ok("登录成功").put("token",token);
+    }
     @GetMapping
     @ApiOperation(value = "获取用户信息", notes = "获取用户信息")
     public Result getUser(@ApiParam(name = "goods",value = "商品信息")SysUser sysUser) {

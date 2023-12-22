@@ -1,7 +1,10 @@
 package com.kfm.system.mapper;
 
+import com.kfm.system.model.SysRole;
 import com.kfm.system.model.SysUserRole;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
 * @author AdminHan
@@ -10,7 +13,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @Entity com.kfm.system.model.SysUserRole
 */
 public interface SysUserRoleMapper extends BaseMapper<SysUserRole> {
-
+    List<SysRole> selectRoleByUserId(Integer userId);
 }
 
 
